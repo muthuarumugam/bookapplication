@@ -8,15 +8,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.dao.BookDAO;
-import com.model.Book;
+import com.dao.OrderDAO;
+import com.model.Order;
+import com.model.User;
 
-@WebServlet("/BookController")
-public class BookController extends HttpServlet {
+@WebServlet("/OrderCancelController")
+public class OrderCancelController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public BookController() {
+    public OrderCancelController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,28 +27,28 @@ public class BookController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		
-		String name=request.getParameter("name");
-		float price = Float.parseFloat(request.getParameter("price"));
-
-		String authorname=request.getParameter("authorname");
-		Book book=new Book();
-		BookDAO dao=new BookDAO();
+		int orderid=Integer.parseInt(request.getParameter("orderid"));
 		
-		book.setName(name);
-		book.setAuthorname(authorname);
-		book.setPrice(price);
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		int userid=user.getId();
+		Order order=new Order();
+		order.setUser_id(userid);
+		order.setId(orderid);
+		OrderDAO dao=new OrderDAO();
 		try {
-			dao.addbook(book);
-			
-			request.setAttribute("ADD SUCESS", " BOOK ADDED");
+			dao.ordercancel(order);
+			request.setAttribute(" SUCESS", " ORDER CANCEL");
 			RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
 			rd.forward(request, response);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
 		
-		
+	
 		
 	}
 

@@ -23,12 +23,7 @@
  
  <br/>
 User id:<input type="text" name="userid" value="<%=user.getId() %>"autofocus required readonly></br>
-Select book:
-<select name="bookid" required ><br>
-<option value="1001">Java</option>
-<option value="1002">Java core</option>
-<option value="1003">C++</option>
-</select>
+book Id:<input type="text" name="bookid" ><br><br>
 <br>
 Quantity:<select name="qty" required ><br>
 <option value="1">1</option>

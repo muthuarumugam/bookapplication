@@ -14,13 +14,13 @@ public class BookDAO {
 	public void addbook(Book book) throws Exception{
 	Connection con = ConnectionUtil.getConnection();
 
-	String sql = "insert into book ( id, bookname, price,authorname) values ( ?, ? ,?,?)";
+	String sql = "insert into book (  bookname, price,authorname) values (  ? ,?,?)";
 
 	java.sql.PreparedStatement pst = con.prepareStatement(sql);
-	pst.setInt(1, book.getBookId());
-	pst.setString(2, book.getName());
-	pst.setFloat(3, book.getPrice());
-	pst.setString(4, book.getAuthorname());
+	
+	pst.setString(1, book.getName());
+	pst.setFloat(2, book.getPrice());
+	pst.setString(3, book.getAuthorname());
 
 	int row = pst.executeUpdate();
 	System.out.println(row + "registered successfully");

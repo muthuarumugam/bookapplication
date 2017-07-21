@@ -56,7 +56,11 @@ for (Order a: orderlist ) {
 
 %>
 
-</table><br><br>
+</table><br><br><h1>Cancel My order </h1>
+<form action="OrderCancelController" method="post">
+ Enter order Id : <input type="text" name="orderid"> <br>
+<button type="submit">are you sure to order cancel</button>
+</form>
 <body><a href="home.jsp">Home</a>
 
 </body>

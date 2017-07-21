@@ -52,20 +52,29 @@ for (Book a: booklist) {
 	out.println( user.getName());
 %><br>
 <%
-String Message2 = (String) request.getAttribute("ADD SUCESS");
+String Message1 = (String) request.getAttribute("ADD SUCESS");
+if (Message1 != null) {
+	out.println(Message1);
+}
+
+
+
+%>
+<%
+String Message2 = (String) request.getAttribute(" SUCESS");
 if (Message2 != null) {
 	out.println(Message2);
 }
 
 
 
-%>
-	
+
+%>	
 
 
 <body><h2 > ADD BOOK  </h2>
 	<form action="BookController" method="post" >
-		Book Id :<input type="text" name="id" /><br> <br> 
+	
 		Book Name:<input type="text" name="name" /><br> <br> 
 		Book price:<input type="text" name="price" /><br> <br> 
 		Book authorname : <input type="text" name="authorname" /><br> <br>
@@ -77,6 +86,9 @@ if (Message2 != null) {
 	</form>
 	<a href="order.jsp">ORDER </a>
 	<br><br>
+
+<a href="orderlist.jsp"> SHOW  ORDER</a>
+<br><br>
 	<br>
 <a href="myorder.jsp">ONLY SHOW MY ORDER</a>
 <br><br>

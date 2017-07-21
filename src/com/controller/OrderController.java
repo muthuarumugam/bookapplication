@@ -18,19 +18,19 @@ public class OrderController extends HttpServlet {
 
 	public OrderController() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	int userid=Integer.parseInt(request.getParameter("userid"));
-
 	int bookid=Integer.parseInt(request.getParameter("bookid"));
+	
 	
 		int qty=Integer.parseInt(request.getParameter("qty"));
 		
 		Order order=new Order();
 		order.setUser_id(userid);
+
 		order.setBook_id(bookid);
 		order.setQty(qty);
 		OrderDAO dao=new OrderDAO();
@@ -47,6 +47,7 @@ public class OrderController extends HttpServlet {
 		rd.forward(request, response);
 	
 	}
+	
 
 	
 }

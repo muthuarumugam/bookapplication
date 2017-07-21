@@ -7,21 +7,38 @@ import java.util.List;
 import com.connection.ConnectionUtil;
 import com.model.Order;
 
+
 public class OrderDAO {
 
 	
-	
+	public void ordercancel(Order order) throws Exception{
+		
+		String sql = "update bookorders set status='cancel' where user_id=? and id=?";
+		Connection con = ConnectionUtil.getConnection();
+
+
+		java.sql.PreparedStatement pst = con.prepareStatement(sql);
+		pst.setInt(1, order.getUser_id());
+		
+		pst.setInt(2, order.getId());
+		int row=pst.executeUpdate();
+		System.out.println("order cancel....." + row);
+		
+		
+		
+		
+	}
 	
 	public void placed(Order order) throws Exception{
-	Connection con = ConnectionUtil.getConnection();
+	  Connection con = ConnectionUtil.getConnection();
 
-	String sql = "insert into bookorders ( id, user_id,book_id,qty) values ( ?,? ,?,?)";
+	String sql = "insert into bookorders (  user_id,book_id,qty) values ( ? ,?,?)";
 
 	java.sql.PreparedStatement pst = con.prepareStatement(sql);
-	pst.setInt(1, order.getId());
-	pst.setInt(2, order.getUser_id());
-	pst.setInt(3, order.getBook_id());
-	pst.setInt(4, order.getQty());
+	
+	pst.setInt(1, order.getUser_id());
+	pst.setInt(2, order.getBook_id());
+	pst.setInt(3, order.getQty());
 
 	int row = pst.executeUpdate();
 	System.out.println(row + "registered successfully");
