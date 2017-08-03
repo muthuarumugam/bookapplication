@@ -6,19 +6,22 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>my order</title>
-	<%User user = (User) session.getAttribute("user");
-	out.println(user.getName());%>
-</head>
-<title>My order list</title>
-</head>
+	<%
+	User user = (User) session.getAttribute("user");
+	%>
 
+<title>My order list</title>
+</head><body>
+
+<jsp:include page="header.jsp" ></jsp:include>
+<div class="container">
 <h3> ORDER LIST</h3>
-<table border="1">
+<table border="1" id="myorderlist" class="table bordered">
 <thead>
 	<tr>
 	    <th>ORDER_ID</th>
@@ -54,14 +57,21 @@ for (Order a: orderlist ) {
 	out.println("</tr>");
 }
 
-%>
+%></table><br><br>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script>
+       $(document).ready(function() {
+              $('#myorderlist').DataTable();
+       });
+</script>
 
-</table><br><br><h1>Cancel My order </h1>
+
+<br><br><h1>Cancel My order </h1>
 <form action="OrderCancelController" method="post">
- Enter order Id : <input type="text" name="orderid"> <br>
+ Enter order Id : <input type="number" name="orderid" required> <br>
 <button type="submit">are you sure to order cancel</button>
 </form>
-<body><a href="home.jsp">Home</a>
-
+</div>
 </body>
 </html>

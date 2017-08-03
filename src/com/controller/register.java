@@ -41,7 +41,7 @@ public class register extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		response.sendRedirect("signin.jsp");
+		response.sendRedirect("index.jsp");
 	}
 
 }

@@ -36,15 +36,20 @@ public class OrderController extends HttpServlet {
 		OrderDAO dao=new OrderDAO();
 		try {
 			dao.placed(order);
+		
+
+			request.setAttribute("INFO_MESSAGE", "Your order is placed successfully");
+			RequestDispatcher rd = request.getRequestDispatcher("orderlist.jsp");
+			rd.forward(request, response);
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			request.setAttribute("INFO_MESSAGE", "please enter correct book id.. ");
+			RequestDispatcher rd = request.getRequestDispatcher("orderlist.jsp");
+			rd.forward(request, response);
 		}
 		
 		
-		request.setAttribute("INFO_MESSAGE", "Your order is placed successfully");
-		RequestDispatcher rd = request.getRequestDispatcher("orderlist.jsp");
-		rd.forward(request, response);
 	
 	}
 	

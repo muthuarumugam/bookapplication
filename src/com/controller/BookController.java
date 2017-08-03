@@ -38,7 +38,7 @@ public class BookController extends HttpServlet {
 		try {
 			dao.addbook(book);
 			
-			request.setAttribute("ADD SUCESS", " BOOK ADDED");
+			request.setAttribute("ADD SUCESS", "BOOK ADDED");
 			RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {

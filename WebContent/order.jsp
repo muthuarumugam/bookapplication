@@ -10,7 +10,8 @@
 </head>
 <body bgcolor="pink">
 
-<body>
+<body><jsp:include page="header.jsp"></jsp:include>
+<div class="container">
 <h2> Order Books</h2>
 <form action="OrderController" method="post">
 <%		User user =(User)session.getAttribute("user");
@@ -36,6 +37,6 @@ Quantity:<select name="qty" required ><br>
 </form>
 
 
-
+</div>
 </body>
 </html>

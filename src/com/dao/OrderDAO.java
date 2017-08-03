@@ -43,6 +43,7 @@ public class OrderDAO {
 	int row = pst.executeUpdate();
 	System.out.println(row + "registered successfully");
 	}
+
 	public List<Order> listorder() throws Exception {
 		
 

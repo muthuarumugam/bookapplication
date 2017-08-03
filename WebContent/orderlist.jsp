@@ -10,9 +10,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>List order</title>
 </head>
-
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<div class="container">
 <h3> ORDER LIST</h3>
-<table border="1">
+<table border="1" id="orderlist" class="table bordered">
 <thead>
 	<tr>
 	    <th>ORDER_ID</th>
@@ -41,15 +43,22 @@ for (Order a: orderlist ) {
 %>
 
 </table><br><br>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script>
+       $(document).ready(function() {
+              $('#orderlist').DataTable();
+       });
+</script>
+
 	
 
-<body>
+
 <%String message = (String)request.getAttribute("INFO_MESSAGE");
 if (message !=null )
 {
 	out.println(message);
 }%><br>
-<a href="myorder.jsp">ONLY SHOW MY ORDER</a>
+</div>
 </body>
-
 </html>
