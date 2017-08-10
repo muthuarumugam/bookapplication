@@ -13,10 +13,10 @@
 <body  ><jsp:include page="header.jsp"></jsp:include>
 <div class="container" align="center">
 <%
-String errorMessage= (String) request.getAttribute("ERROR");
-if(errorMessage != null)
+String Message= (String) request.getAttribute("INFO_MESSAGE");
+if(Message != null)
 {
-out.println(errorMessage);
+out.println(Message);
 }
 %>
 	<form method="post" action="SigninController" class="form-horizontal">
@@ -41,5 +41,7 @@ out.println(errorMessage);
     </div>
   </div>	</form>
 </div>
+
+<jsp:include page="putter.jsp"></jsp:include>
 </body>
 </html>

@@ -22,8 +22,8 @@ public class OrderController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	int userid=Integer.parseInt(request.getParameter("userid"));
-	int bookid=Integer.parseInt(request.getParameter("bookid"));
+	int userid=Integer.parseInt(request.getParameter("user_id"));
+	int bookid=Integer.parseInt(request.getParameter("book_id"));
 	
 	
 		int qty=Integer.parseInt(request.getParameter("qty"));
@@ -39,13 +39,13 @@ public class OrderController extends HttpServlet {
 		
 
 			request.setAttribute("INFO_MESSAGE", "Your order is placed successfully");
-			RequestDispatcher rd = request.getRequestDispatcher("orderlist.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("order.jsp");
 			rd.forward(request, response);
 			
 		} catch (Exception e) {
 			
 			request.setAttribute("INFO_MESSAGE", "please enter correct book id.. ");
-			RequestDispatcher rd = request.getRequestDispatcher("orderlist.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("order.jsp");
 			rd.forward(request, response);
 		}
 		

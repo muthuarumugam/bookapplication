@@ -10,16 +10,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>my order</title>
-	<%
-	User user = (User) session.getAttribute("user");
-	%>
 
 <title>My order list</title>
 </head><body>
 
 <jsp:include page="header.jsp" ></jsp:include>
 <div class="container">
+<%
+	String message= (String) request.getAttribute("INFO_MESSAGE");
+	if(message!=null){
+		out.println(message);
+	}
+
+%>
 <h3> ORDER LIST</h3>
 <table border="1" id="myorderlist" class="table bordered">
 <thead>
@@ -36,7 +39,7 @@
 
 
 <%
-User user1 = (User) session.getAttribute("user");
+User user = (User) session.getAttribute("user");
 
 Order order=new Order();
 int id=user.getId();
@@ -69,9 +72,15 @@ for (Order a: orderlist ) {
 
 <br><br><h1>Cancel My order </h1>
 <form action="OrderCancelController" method="post">
- Enter order Id : <input type="number" name="orderid" required> <br>
-<button type="submit">are you sure to order cancel</button>
+ 
+  <div class="form-group">
+    <label for="orderid">ORDER ID :</label>
+    <input type="text" class="form-control" name="orderid">
+  </div>
+<button type="submit" class="btn btn-danger">are you sure to order cancel</button>
 </form>
 </div>
+
+<jsp:include page="putter.jsp"></jsp:include>
 </body>
 </html>

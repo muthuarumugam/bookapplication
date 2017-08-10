@@ -18,32 +18,17 @@
 
 	<% 
 	     User user=(User)session.getAttribute("user");
-	    if(user!=null){
-%>	    	
-		<div class="alert alert-success">
-	  <strong>Login Success !</strong> 
-	</div>
-	 <%   
-		String message=(String) request.getAttribute("LOGIN SUCESS");
-	    
-	      %>
-	<div class="alert alert-info">
-	<strong><%=message %> : </strong> 
-	<%=user.getName() %>
-	</div>
-
-<%
-String message1 = (String) request.getAttribute("ADD SUCESS");
-if (message1 != null) { %> 
 	
+	    if(user!=null)
+	    { %>
 	<div class="alert alert-success">
-	  <strong>Success!</strong> <%=message1 %>
+	  <strong>WEL COME : <%=user.getName() %></strong> 
 	</div>
 
 	
-<%} } 
+<%}
 
-	    else{%>
+	    else{ %>
 		
 
 	    <h3>This is home....</h3><br>
@@ -51,22 +36,10 @@ if (message1 != null) { %>
 	    you order any book you must be login  book application or create a new account..
 	    </h4>
 
-	    	   <% }
-
-
-String message2 = (String) request.getAttribute("SUCESS");
-if (message2 != null) {
-	out.println(message2);
-}
-
-
-
-
-%>	
 
 	
-
-
+<%} %>
 </div>	
-	</body>
+	
+<jsp:include page="putter.jsp"></jsp:include></body>
 </html>

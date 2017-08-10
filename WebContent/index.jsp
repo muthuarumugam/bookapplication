@@ -45,6 +45,6 @@ I'll always remember
 Three days in Rome  </p>
 </div>
 
->
+<jsp:include page="putter.jsp"></jsp:include>
 </body>
 </html>

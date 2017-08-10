@@ -26,5 +26,6 @@
 	</div>
 
 
+<jsp:include page="putter.jsp"></jsp:include>
 </body>
 </html>

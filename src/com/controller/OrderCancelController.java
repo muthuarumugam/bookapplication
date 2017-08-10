@@ -17,39 +17,43 @@ import com.model.User;
 @WebServlet("/OrderCancelController")
 public class OrderCancelController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public OrderCancelController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
+	public OrderCancelController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		
-		int orderid=Integer.parseInt(request.getParameter("orderid"));
-		
+		int orderid = Integer.parseInt(request.getParameter("orderid"));
+
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		int userid=user.getId();
-		Order order=new Order();
+		int userid = user.getId();
+		Order order = new Order();
 		order.setUser_id(userid);
 		order.setId(orderid);
-		OrderDAO dao=new OrderDAO();
+		OrderDAO dao = new OrderDAO();
 		try {
-			dao.ordercancel(order);
-			request.setAttribute(" SUCESS", " ORDER CANCEL");
-			RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
-			rd.forward(request, response);
-			
+			int row = dao.ordercancel(order);
+			System.out.println(row);
+			if (row == 0) {
+
+				request.setAttribute("INFO_MESSAGE", "Please enter correct order id..");
+				RequestDispatcher rd = request.getRequestDispatcher("myorder.jsp");
+				rd.forward(request, response);
+			} else {
+
+				request.setAttribute("INFO_MESSAGE", "YOUR ORDER IS CANCELLED...");
+				RequestDispatcher rd = request.getRequestDispatcher("myorder.jsp");
+				rd.forward(request, response);
+
+			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		
-	
-		
+
 	}
 
 }

@@ -49,5 +49,7 @@ for (Book a: booklist) {
        });
 </script>
 </div>
+
+<jsp:include page="putter.jsp"></jsp:include>
 </body>
 </html>

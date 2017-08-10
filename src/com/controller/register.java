@@ -14,9 +14,6 @@ import com.model.User;
 public class register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public register() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -41,7 +38,7 @@ public class register extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("login.jsp");
 	}
 
 }

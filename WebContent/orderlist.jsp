@@ -54,11 +54,10 @@ for (Order a: orderlist ) {
 	
 
 
-<%String message = (String)request.getAttribute("INFO_MESSAGE");
-if (message !=null )
-{
-	out.println(message);
-}%><br>
+
+<br>
 </div>
+
+<jsp:include page="putter.jsp"></jsp:include>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package com.controller;
 
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -18,12 +17,9 @@ import com.model.User;
 public class SigninController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public SigninController() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -37,34 +33,25 @@ public class SigninController extends HttpServlet {
 		UserDAO userdao = new UserDAO();
 		try {
 			User u = userdao.selectuser(user);
-			System.out.println(u);
-
-			if (u == null) {
-				request.setAttribute("ERROR", "invalid login....");
-				RequestDispatcher rd = request.getRequestDispatcher("signin.jsp");
-				rd.forward(request, response);
-
-			}
-
-			else {
-				
-				
+			if (u != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", u);
-				request.setAttribute("LOGIN SUCESS", "WELL COME");
-				RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+				request.setAttribute("INFO_MESSAGE", "Now your login successfully....");
+				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 				rd.forward(request, response);
-				
-				
-
+			} 
+			else if(u==null){
+				request.setAttribute("INFO_MESSAGE", "invalid login....");
+				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+				rd.forward(request, response);
+			
 				
 			}
 
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 		}
-
 	}
-
 }
